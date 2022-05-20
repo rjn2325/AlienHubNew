@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<UserModal,Long> {
 	Boolean findUserByEmail(@Param("emailquery") String email);
 
   
-  @Query(value = "select name ,email,dob,location  from UserModal user where email = :emailquery and password = :passwordQuery")
+  @Query(value = "select u  from UserModal u where u.email = :emailquery and  u.password = :passwordQuery")
 	UserModal findUserByEmailAndPassword(@Param("emailquery") String email,@Param("passwordQuery") String password);
 
 

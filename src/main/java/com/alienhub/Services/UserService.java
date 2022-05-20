@@ -49,10 +49,10 @@ public class UserService {
   }
 
   public UserModal findUserByEmailAndPassword(String email,String password) {
-    System.out.println("result " + userRepository.findUserByEmail(email));
-    usermodal = userRepository.findUserByEmailAndPassword(email,password);
-    System.out.println(usermodal);
-    return usermodal;
+    // System.out.println("result " + userRepository.findUserByEmail(email));
+   return userRepository.findUserByEmailAndPassword(email,password);
+    
+  
 
   }
 

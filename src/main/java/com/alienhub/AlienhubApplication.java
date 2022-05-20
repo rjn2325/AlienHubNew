@@ -9,5 +9,4 @@ public class AlienhubApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AlienhubApplication.class, args);
 	}
-
 }

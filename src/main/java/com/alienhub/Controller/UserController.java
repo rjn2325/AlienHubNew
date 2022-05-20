@@ -36,11 +36,25 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public UserModal validateUser(@RequestBody UserModal userModal) {
-    ResponseModel responseModel = new ResponseModel();
+  public ResponseModel<UserModal> validateUser(@RequestBody UserModal userModal) {
 
-    return userService.findUserByEmailAndPassword(userModal.getEmail(),userModal.getPassword());
-    
+    if (userService.findUserByEmailAndPassword(userModal.getEmail(), userModal.getPassword()) == null) {
+
+      ResponseModel responseModel = new ResponseModel();
+
+      responseModel.setMessage("Login failed");
+      return responseModel;
+
+    } else {
+      ResponseModel<UserModal> responseModel = new ResponseModel<UserModal>();
+
+      responseModel.setSucccess(true);
+      responseModel.setMessage("Login Successfully.");
+      responseModel.setData(userService.findUserByEmailAndPassword(userModal.getEmail(), userModal.getPassword()) );
+      return responseModel;
+
+    }
+
   }
 
 }
