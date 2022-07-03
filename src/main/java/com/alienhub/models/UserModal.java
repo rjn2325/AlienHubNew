@@ -28,7 +28,10 @@ public class UserModal {
 	@Column
 	private String password;
 	@Column	
-	private String location;
+	private Double lat;
+	
+	@Column	
+	private Double longg;
 	
 
 	
@@ -79,12 +82,20 @@ public class UserModal {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getLocation() {
-		return location;
+	public Double getLat() {
+		return lat;
 	}
 	
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+	
+	public Double getLongg() {
+		return longg;
+	}
+	
+	public void setLongg(Double longg) {
+		this.longg = longg;
 	}
 
 }

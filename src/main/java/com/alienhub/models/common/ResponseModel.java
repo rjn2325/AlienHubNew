@@ -8,7 +8,16 @@ public class ResponseModel<T> {
 
   private Boolean success = false;
   private String message = "";
-  // private Object data= new Object();
+  private int status=200;
+  public int getStatus() {
+	return status;
+}
+
+public void setStatus(int status) {
+	this.status = status;
+}
+
+// private Object data= new Object();
   private T data;
   private UserModal userModal = new UserModal();
 

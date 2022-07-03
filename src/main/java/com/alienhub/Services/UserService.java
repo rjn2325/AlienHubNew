@@ -1,6 +1,7 @@
 package com.alienhub.Services;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -48,11 +49,57 @@ public class UserService {
     }
   }
 
+//  public Long deleteUser(Long id) {
+//   
+//      return userRepository.deleteByAlienId(id);
+//     
+//  }
+
   public UserModal findUserByEmailAndPassword(String email,String password) {
-    // System.out.println("result " + userRepository.findUserByEmail(email));
    return userRepository.findUserByEmailAndPassword(email,password);
-    
+
+  }
   
+ 
+
+
+
+  public UserModal getUserDetails(Long id) {
+    // System.out.println("result " + userRepository.findUserByEmail(email));
+    if (userRepository.findUserByAlienId(id) == null) {
+      System.out.println('h');
+
+      return userRepository.findUserByAlienId(id);
+    } else {
+      return userRepository.findUserByAlienId(id);
+
+    }
+
+  }
+  
+  public List<UserModal> getUserList() {
+    // System.out.println("result " + userRepository.findUserByEmail(email));
+    if (userRepository.findAllUsers() == null) {
+      System.out.println('h');
+
+      return userRepository.findAllUsers();
+    } else {
+      return userRepository.findAllUsers();
+
+    }
+
+  }
+
+  public List<UserModal> getNearByUsers(Long id) {
+    // System.out.println("result " + userRepository.findUserByEmail(email));
+    if (userRepository.findAllNearByUsers(id) == null) {
+      System.out.println('h');
+
+      return userRepository.findAllUsers();
+    } else {
+      return userRepository.findAllUsers();
+
+    }
 
   }
 
