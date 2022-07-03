@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+
+
+    <div class="account-pages my-5 pt-sm-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="text-center mb-4">
+                        <a href="index.html" class="auth-logo mb-5 d-block">
+                            <img src="assets/images/logo.jpg" alt="" height="50" width="50" class="rounded-circle">
+                        </a>
+
+                        <h4>Sign up</h4>
+                        <p class="text-muted mb-4">Get your AlienHub account now.</p>
+
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="p-3">
+                                <form>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        <div class="input-group bg-soft-light rounded-3  mb-3">
+                                            <span class="input-group-text text-muted" id="basic-addon5">
+                                                <i class="ri-user-2-line"></i>
+                                            </span>
+                                            <input type="name" name="name"
+                                                class="form-control form-control-lg bg-soft-light border-light"
+                                                placeholder="Enter Name" aria-label="Enter Email"
+                                                aria-describedby="basic-addon5">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <div class="input-group bg-soft-light rounded-3  mb-3">
+                                            <span class="input-group-text text-muted" id="basic-addon5">
+                                                <i class="ri-mail-line"></i>
+                                            </span>
+                                            <input type="email" name="email"
+                                                class="form-control form-control-lg bg-soft-light border-light"
+                                                placeholder="Enter Email" aria-label="Enter Email"
+                                                aria-describedby="basic-addon5">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Date Of Birth</label>
+                                        <div class="input-group bg-soft-light mb-3 rounded-3">
+                                            <span class="input-group-text border-light text-muted" id="basic-addon6">
+                                                <i class="ri-calendar-line"></i>
+                                            </span>
+                                            <input type="date" name="dob"
+                                                class="form-control form-control-lg bg-soft-light border-light"
+                                                placeholder="Enter Username" aria-label="Enter DOB"
+                                                aria-describedby="basic-addon6">
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="mb-4">
+                                        <label class="form-label">Password</label>
+                                        <div class="input-group bg-soft-light mb-3 rounded-3">
+                                            <span class="input-group-text border-light text-muted" id="basic-addon7">
+                                                <i class="ri-lock-2-line"></i>
+                                            </span>
+                                            <input type="password" name="password"
+                                                class="form-control form-control-lg bg-soft-light border-light"
+                                                placeholder="Enter Password" aria-label="Enter Password"
+                                                aria-describedby="basic-addon7">
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary waves-effect waves-light"
+                                            onclick="handleSubmit(event)">Sign
+                                            up</button>
+                                    </div>
+
+                                    <div class="mt-4 text-center">
+                                        <p class="text-muted mb-0">By registering you agree to the AlienHub <a href="#"
+                                                class="text-primary">Terms of Use</a></p>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        <p>Already have an account ? <a href="auth-login.html" class="fw-medium text-primary"> Signin
+                            </a> </p>
+                        <!-- <p>© AlienHub. Crafted with <i class="mdi mdi-heart text-danger"></i> by Softonic Solutions</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end account-pages -->
+
+
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+
+    <script src="assets/js/app.js">
+
+
+
+
+    </script>
+
+    <script>
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const params = {
+                name: $("[name='name']").val(),
+                email: $("[name='email']").val(),
+                dob: $("[name='dob']").val(),
+                lat: getRandomLat().lat,
+                longg: getRandomLat().long,
+                password: $("[name='password']").val(),
+
+            }
+
+
+            console.log(params);
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                contentType: 'application/json',
+                data: JSON.stringify(params),
+                url: 'http://127.0.0.1:8080/user/signup',
+                headers: { 'Access-Control-Allow-Origin': '*' },
+                success: function (data, status, xhr) {
+                    alert(data.message)
+                },
+                error: function (data, status, xhr) {
+                    alert(data.message)
+
+                }
+            });
+        }
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', handleSubmit);
+
+    </script>
+
+</body>
+
+</html>
